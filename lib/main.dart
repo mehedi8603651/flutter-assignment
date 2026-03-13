@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_assingmests/text_style.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,219 +11,153 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: MyHomePage());
+    return MaterialApp(home: HomePage(), debugShowCheckedModeBanner: false);
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  final List<String> images = const [
+    'assets/images/Rectangle 2.png',
+    'assets/images/Rectangle 2.1.png',
+    'assets/images/Rectangle 2.2.png',
+    'assets/images/Rectangle 2.3.png',
+    'assets/images/Rectangle 2.4.png',
+    'assets/images/Rectangle 2.5.png',
+    'assets/images/Rectangle 2.6.png',
+    'assets/images/Rectangle 2.7.png',
+    'assets/images/Rectangle 2.9.png',
+    'assets/images/Rectangle 2.10.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tasbih Counter'),
-        titleSpacing: 5,
-        backgroundColor: const Color(0xFFFFFFFF),
-        leading: Icon(Icons.arrow_back),
-        leadingWidth: 35,
-        actions: [
-          Container(
-            height: 30,
-            width: 30,
-            margin: EdgeInsets.only(right: 10),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0xFFCEC5D8).withOpacity(0.76),
-            ),
-            child: Icon(Icons.notifications),
-          ),
-        ],
-      ),
+      //appBar: AppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(
+              //mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  children: [
-                    Container(
-                      height: 447,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/tasbih_1.png'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(height: 10),
-                          Text(
-                            'الله أكبر',
-                            style: AppTextStyle.arbiWhiteText20,
-                          ),
-                          SizedBox(height: 10),
-                          Text('0:00:40', style: AppTextStyle.timmer),
-                          SizedBox(height: 10),
-                          Text(
-                            'Tasbih Counter',
-                            style: AppTextStyle.arbiWhiteText20,
-                          ),
-                          SizedBox(height: 10),
-                          Text("046", style: AppTextStyle.timmer),
-                          SizedBox(height: 10),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              height: 45,
-                              width: 108,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Color(0xFF794CA5),
-                              ),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  height: 39,
-                                  width: 39,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    color: Color(0xFFCEC5D8),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 40),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            spacing: 20,
-                            children: [
-                              Container(
-                                height: 35,
-                                width: 44,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/images/Reset_Button.png',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height: 35,
-                                width: 52,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/images/Stop_Button.png',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height: 35,
-                                width: 44,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/images/Pause_Button.png',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(height: 20),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Add Theme',
-                    style: TextStyle(fontSize: 16, color: Color(0xFF000000)),
+                Text(
+                  'Discover',
+                  style: GoogleFonts.comfortaa(
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 36,
+                    letterSpacing: 0.54,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  "WHAT'S NEW TODAY",
+                  style: GoogleFonts.roboto(
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w900,
+                    fontSize: 13,
+                    letterSpacing: 1.44,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  height: 387,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/Rectangle 2.8.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  height: 28,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/Component.png'),
+                      alignment: Alignment.centerLeft,
+                      //fit: BoxFit.,
+                    ),
                   ),
                 ),
                 SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  spacing: 16,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 155,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(2),
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/Theme_1.png'),
-                          ),
+                Text(
+                  'BROWSE ALL',
+                  style: GoogleFonts.roboto(
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w900,
+                    fontSize: 13,
+                    letterSpacing: 1.44,
+                  ),
+                ),
+                SizedBox(height: 10),
+
+                /*GridView.builder(
+                  itemCount: images.length,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(images[index]),
+                          fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 155,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(2),
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/Theme_2.png'),
-                          ),
-                        ),
+                    );
+                  },
+                ),*/
+                MasonryGridView.count(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                  itemCount: images.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ClipRect(
+                      child: Image.asset(images[index], fit: BoxFit.cover),
+                    );
+                  },
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  height: 50,
+                  width: double.infinity,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Color(0xFF000000)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
                       ),
                     ),
-                  ],
+                    child: Text(
+                      'SEE MORE...',
+                      style: GoogleFonts.roboto(
+                        color: Color(0xFF000000),
+                        fontWeight: FontWeight.w900,
+                        fontSize: 13,
+                        letterSpacing: 1.44,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF764CA5).withOpacity(0.7),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        selectedLabelStyle: AppTextStyle.bottomIconText,
-        unselectedLabelStyle: AppTextStyle.bottomIconText,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/images/home-outline.png'),
-              size: 24,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/images/calendar-outline.png'),
-              size: 24,
-            ),
-            label: 'Calendar',
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/images/clock-outline.png'),
-              size: 24,
-            ),
-            label: 'Shedule',
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/images/settings-outline.png'),
-              size: 24,
-            ),
-            label: 'Setting',
-          ),
-        ],
       ),
     );
   }
