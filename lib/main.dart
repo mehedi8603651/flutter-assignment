@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -15,144 +14,242 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
-  final List<String> images = const [
-    'assets/images/Rectangle 2.png',
-    'assets/images/Rectangle 2.1.png',
-    'assets/images/Rectangle 2.2.png',
-    'assets/images/Rectangle 2.3.png',
-    'assets/images/Rectangle 2.4.png',
-    'assets/images/Rectangle 2.5.png',
-    'assets/images/Rectangle 2.6.png',
-    'assets/images/Rectangle 2.7.png',
-    'assets/images/Rectangle 2.9.png',
-    'assets/images/Rectangle 2.10.png',
-  ];
+  @override
+  State<StatefulWidget> createState() {
+    return HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> {
+  double value = 100;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(),
+      appBar: AppBar(
+        //title: Text('my app'),
+        leading: BackButton(color: Color(0xFF3C2F2F)),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search, color: Color(0xFF3C2F2F)),
+          ),
+        ],
+      ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(10),
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: SingleChildScrollView(
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
-                Text(
-                  'Discover',
-                  style: GoogleFonts.comfortaa(
-                    color: Color(0xFF000000),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 36,
-                    letterSpacing: 0.54,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "WHAT'S NEW TODAY",
-                  style: GoogleFonts.roboto(
-                    color: Color(0xFF000000),
-                    fontWeight: FontWeight.w900,
-                    fontSize: 13,
-                    letterSpacing: 1.44,
-                  ),
-                ),
-                SizedBox(height: 10),
                 Container(
-                  height: 387,
-                  width: double.infinity,
+                  height: 370,
+                  width: 370,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/Rectangle 2.8.png'),
+                      image: AssetImage('assets/images/barger.png'),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
                 SizedBox(height: 10),
-                Container(
-                  height: 28,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/Component.png'),
-                      alignment: Alignment.centerLeft,
-                      //fit: BoxFit.,
-                    ),
+                Text(
+                  'Hamburger Veggie Burger',
+                  style: GoogleFonts.roboto(
+                    color: Color(0xFF3C2F2F),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 25,
+                    letterSpacing: 0,
+                    height: 1.35,
                   ),
+                ),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 16,
+                      width: 16,
+                      child: Image.asset('assets/images/star.png'),
+                    ),
+
+                    Text(
+                      ' 4.8 - 14 mins',
+                      style: GoogleFonts.roboto(
+                        color: Color(0xFF808080),
+                        fontSize: 15,
+                        letterSpacing: 0,
+                        fontWeight: FontWeight.w500,
+                        height: 1.35,
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'BROWSE ALL',
+                  'Enjoy our delicious Hamburger Veggie Burger, made with a savory blend of fresh vegetables and herbs, topped with crisp lettuce, juicy tomatoes, and tangy pickles, all served on a soft, toasted bun. ',
                   style: GoogleFonts.roboto(
-                    color: Color(0xFF000000),
-                    fontWeight: FontWeight.w900,
-                    fontSize: 13,
-                    letterSpacing: 1.44,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                    letterSpacing: 0,
+                    height: 1.72,
                   ),
                 ),
                 SizedBox(height: 10),
 
-                /*GridView.builder(
-                  itemCount: images.length,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8,
-                  ),
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(images[index]),
-                          fit: BoxFit.cover,
-                        ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Spicy',
+                            style: GoogleFonts.roboto(
+                              color: Color(0xFF3C2F2F),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              letterSpacing: 0,
+                              height: 1.35,
+                            ),
+                          ),
+                          Slider(
+                            padding: EdgeInsets.zero,
+                            value: value,
+                            min: 0.0,
+                            max: 100,
+                            activeColor: Color(0xFFFF9900),
+                            onChanged: (newValue) {
+                              setState(() {
+                                value = newValue;
+                              });
+                            },
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Mild',
+                                style: GoogleFonts.roboto(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                  color: Color(0xFF1CC019),
+                                  height: 1.35,
+                                ),
+                              ),
+                              Text(
+                                'Hot',
+                                style: GoogleFonts.roboto(
+                                  color: Color(0xFFEF2A39),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.35,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    );
-                  },
-                ),*/
-                MasonryGridView.count(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                  itemCount: images.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ClipRect(
-                      child: Image.asset(images[index], fit: BoxFit.cover),
-                    );
-                  },
+                    ),
+                    SizedBox(width: 30),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Portion',
+                            style: GoogleFonts.roboto(
+                              color: Color(0xFF3C2F2F),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              height: 1.35,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                            children: [
+                              Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xFFEF2A39),
+                                ),
+                                child: Center(child: Icon(Icons.add)),
+                              ),
+                              Text(
+                                '1',
+                                style: GoogleFonts.inter(
+                                  color: Color(0xFF3C2F2F),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
+                                  height: 1.35,
+                                ),
+                              ),
+                              Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xFFEF2A39),
+                                ),
+                                child: Center(child: Icon(Icons.remove)),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 10),
-                SizedBox(
-                  height: 50,
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: Color(0xFF000000)),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      height: 70,
+                      width: 104,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Color(0xFFEF2A39),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '\$9.99',
+                          style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 22,
+                            color: Color(0xFFFFFFFF),
+                            height: 1.35,
+                          ),
+                        ),
                       ),
                     ),
-                    child: Text(
-                      'SEE MORE...',
-                      style: GoogleFonts.roboto(
-                        color: Color(0xFF000000),
-                        fontWeight: FontWeight.w900,
-                        fontSize: 13,
-                        letterSpacing: 1.44,
+                    Container(
+                      height: 70,
+                      width: 239,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF3C2F2F),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'ORDER NOW',
+                          style: GoogleFonts.inter(
+                            color: Color(0xFFFFFFFF),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            height: 1.35,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),
